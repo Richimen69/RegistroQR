@@ -10,6 +10,7 @@ function FormPage() {
     company: "",
     phone: "",
     email: "",
+    product: "",
   });
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -68,7 +69,7 @@ function FormPage() {
               />
 
               <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Nombre comercial de la empresa
+                Nombre comercial de la empresa
               </span>
             </label>
           </div>
@@ -87,7 +88,7 @@ function FormPage() {
               />
 
               <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Número de teléfono de contacto
+                Número de teléfono de contacto
               </span>
             </label>
           </div>
@@ -106,9 +107,21 @@ function FormPage() {
               />
 
               <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Correo Electrónico
+                Correo Electrónico
               </span>
             </label>
+          </div>
+          <div className=" w-full">
+            <label htmlFor="product" className="block text-sm font-medium text-white"> Productos </label>
+
+            <textarea
+              id="product"
+              className="mt-2 w-full rounded-lg border-white border bg-black text-center text-white align-top shadow-sm sm:text-sm"
+              rows="5"
+              name="product"
+              placeholder="5 Productos"
+              onChange={handleChange}
+            ></textarea>
           </div>
           <button className="p-2 inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
             Registrar
