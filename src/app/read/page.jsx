@@ -1,41 +1,36 @@
 'use client'
 import React, { useRef } from 'react';
-import jsQR from 'jsqr';
+import QRCode from 'qrcode';
 
-function QRReader() {
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
-  const resultRef = useRef(null);
+function QRGenerator() {
+  const qrRef = useRef(null);
+  const inputRef = useRef(null);
 
-  const startScan = () => {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-      .then(stream => {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-        scanQR();
-      });
+  const generateQR = async () => {
+    const text = inputRef.current.value;
+    try {
+      const url = await QRCode.toDataURL(text);
+      qrRef.current.src = url;
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const scanQR = () => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-    context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-    if (qrCode) {
-      resultRef.current.textContent = qrCode.data;
-    }
-    requestAnimationFrame(scanQR);
+  const downloadQR = () => {
+    const link = document.createElement('a');
+    link.download = 'qrcode.png';
+    link.href = qrRef.current.src;
+    link.click();
   };
 
   return (
     <div>
-      <video ref={videoRef} style={{ display: 'none' }} />
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
-      <button onClick={startScan}>Iniciar escaneo</button>
-      <p ref={resultRef} />
+      <input ref={inputRef} type="text" placeholder="Texto para el código QR" />
+      <button onClick={generateQR}>Generar QR</button>
+      <img ref={qrRef} alt="Código QR" />
+      <button onClick={downloadQR}>Descargar QR</button>
     </div>
   );
 }
 
-export default QRReader;
+export default QRGenerator;

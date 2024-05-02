@@ -10,7 +10,6 @@ function FormPage() {
     comapny: "",
     phone: "",
     email: "",
-    product: "",
   });
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ function FormPage() {
   ) => setSupp({ ...newSupp, [e.target.name]: e.target.value });
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center">
+    <div className="h-screen w-screen flex flex-col bg-black items-center justify-center">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center justify-center">
           <div className="py-2">
@@ -44,7 +43,7 @@ function FormPage() {
                 type="text"
                 id="name"
                 name="name"
-                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent text-white focus:outline-none focus:ring-0"
                 placeholder="Nombre"
                 onChange={handleChange}
               />
@@ -63,7 +62,7 @@ function FormPage() {
                 type="text"
                 id="company"
                 name="company"
-                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent text-white placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Nombre comercial de la empresa"
                 onChange={handleChange}
               />
@@ -82,7 +81,7 @@ function FormPage() {
                 type="tel"
                 id="phone"
                 name="phone"
-                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                className="peer mx-2 h-[40px] w-[300px] border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Número de teléfono de contacto"
                 onChange={handleChange}
               />
@@ -101,32 +100,13 @@ function FormPage() {
                 type="email"
                 id="email"
                 name="email"
-                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Correo Electrónico"
                 onChange={handleChange}
               />
 
               <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
               Correo Electrónico
-              </span>
-            </label>
-          </div>
-          <div className="py-2">
-            <label
-              htmlFor="product"
-              className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-            >
-              <input
-                type="text"
-                id="product"
-                name="product"
-                className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
-                placeholder="Productos"
-                onChange={handleChange}
-              />
-
-              <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Productos
               </span>
             </label>
           </div>
