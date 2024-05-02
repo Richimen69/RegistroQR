@@ -117,7 +117,7 @@ function FormPage() {
             <textarea
               id="product"
               className="mt-2 w-full rounded-lg border-white border bg-black text-center text-white align-top shadow-sm sm:text-sm"
-              rows="5"
+              type="text"
               name="product"
               placeholder="5 Productos"
               onChange={handleChange}
