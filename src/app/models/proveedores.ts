@@ -23,6 +23,10 @@ const proveedoresSchema: Schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  product: {
+    type: String,
+    required: true
+  },
 });
 
 const Proveedores = mongoose.models.Proveedores || mongoose.model<Proveedores>("Proveedores", proveedoresSchema);
