@@ -7,7 +7,7 @@ import { MdOutlineCancel } from "react-icons/md";
 function FormPage() {
   const [newSupp, setSupp] = useState({
     name: "",
-    comapny: "",
+    company: "",
     phone: "",
     email: "",
   });

@@ -14,7 +14,7 @@ export default function Home() {
             <p className="text-2xl text-white">Agregar Invitado</p>
           </div>
         </Link>
-        <Link href={"/form"}>
+        <Link href={"/formProveedores"}>
           <div className="bg-[#804ea2] p-10 w-[300px] h-[300px] flex flex-col items-center justify-center rounded-[40px] md:hover:scale-105 md:transition-transform hover:opacity-75 cursor-pointer">
             <IconContext.Provider value={{ color: "white", size: "8em" }}>
               <FcAssistant />

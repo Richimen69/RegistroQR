@@ -23,6 +23,10 @@ const invitadosSchema: Schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  product: {
+    type: String,
+    required: true
+  },
 });
 
 const Invitados = mongoose.models.Invitados || mongoose.model<Invitados>("Invitados", invitadosSchema);

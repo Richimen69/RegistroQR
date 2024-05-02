@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document } from "mongoose";
-export interface Invitados extends Document {
+export interface Proveedores extends Document {
   name: String,
   company: String,
   phone: Number,
   email: String,
   product: String,
 }
-const invitadosSchema: Schema = new mongoose.Schema({
+const proveedoresSchema: Schema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -25,6 +25,6 @@ const invitadosSchema: Schema = new mongoose.Schema({
   },
 });
 
-const Invitados = mongoose.models.Invitados || mongoose.model<Invitados>("Invitados", invitadosSchema);
+const Proveedores = mongoose.models.Proveedores || mongoose.model<Proveedores>("Proveedores", proveedoresSchema);
 
-export default Invitados;
+export default Proveedores;
