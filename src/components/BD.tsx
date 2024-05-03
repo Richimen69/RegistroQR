@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { MdQrCode } from "react-icons/md";
+import QRGenerator from './QRGenerator';
 const BD: React.FC<{ consulta: string }> = ({ consulta }) => {
   const [tableData, setTableData] = useState([]);
   useEffect(() => {
@@ -36,6 +37,9 @@ const BD: React.FC<{ consulta: string }> = ({ consulta }) => {
             <th className="md:px-6 mx-1 py-3 text-left md:text-xs md:font-medium text-xs font-normal text-white uppercase tracking-wider">
               Productos
             </th>
+            <th className="md:px-6 mx-1 py-3 text-left md:text-xs md:font-medium text-xs font-normal text-white uppercase tracking-wider">
+              QR
+            </th>
           </tr>
         </thead>
         <tbody className="bg-gray-700 divide-y divide-gray-200">
@@ -46,6 +50,7 @@ const BD: React.FC<{ consulta: string }> = ({ consulta }) => {
               <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">{item.phone}</td>
               <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">{item.email}</td>
               <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">{item.product}</td>
+              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white"><button><QRGenerator text={item._id} name={item.name.toString()}/></button></td>
             </tr>
           ))}
         </tbody>
