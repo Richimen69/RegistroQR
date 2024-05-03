@@ -55,6 +55,7 @@ function FormPage() {
                                 type="text"
                                 id="name"
                                 name="name"
+                                required
                                 value={newSupp.name}
                                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent text-white focus:outline-none focus:ring-0"
                                 placeholder="Nombre"
@@ -75,6 +76,7 @@ function FormPage() {
                                 type="text"
                                 id="company"
                                 name="company"
+                                required
                                 value={newSupp.company}
                                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent text-white placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Nombre comercial de la empresa"
@@ -95,6 +97,7 @@ function FormPage() {
                                 type="tel"
                                 id="phone"
                                 name="phone"
+                                required
                                 value={newSupp.phone}
                                 className="peer mx-2 h-[40px] w-[300px] border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Número de teléfono de contacto"
@@ -115,6 +118,7 @@ function FormPage() {
                                 type="email"
                                 id="email"
                                 name="email"
+                                required
                                 value={newSupp.email}
                                 className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Correo Electrónico"
@@ -135,6 +139,7 @@ function FormPage() {
                                 type="text"
                                 id="product"
                                 name="product"
+                                required
                                 value={newSupp.product}
                                 className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Giro"
