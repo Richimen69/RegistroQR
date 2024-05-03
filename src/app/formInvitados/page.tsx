@@ -12,10 +12,22 @@ function FormPage() {
     email: "",
     product: "",
   });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(newSupp)
     await createSupp()
+    setSupp({
+      name: "",
+      company: "",
+      phone: "",
+      email: "",
+      product: "",
+    });
+    setShowSuccessMessage(true); // Mostrar el mensaje de éxito
+    setTimeout(() => {
+      setShowSuccessMessage(false); // Ocultar el mensaje después de unos segundos
+    }, 4000);
   };
   const createSupp = async () => {
     const res = await fetch("/api/invitados", {
@@ -43,9 +55,11 @@ function FormPage() {
               <input
                 type="text"
                 id="name"
+                value={newSupp.name}
                 name="name"
                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent text-white focus:outline-none focus:ring-0"
                 placeholder="Nombre"
+                required
                 onChange={handleChange}
               />
 
@@ -63,6 +77,8 @@ function FormPage() {
                 type="text"
                 id="company"
                 name="company"
+                value={newSupp.company}
+                required
                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent text-white placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Nombre comercial de la empresa"
                 onChange={handleChange}
@@ -81,7 +97,9 @@ function FormPage() {
               <input
                 type="tel"
                 id="phone"
+                value={newSupp.phone}
                 name="phone"
+                required
                 className="peer mx-2 h-[40px] w-[300px] border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Número de teléfono de contacto"
                 onChange={handleChange}
@@ -100,7 +118,9 @@ function FormPage() {
               <input
                 type="email"
                 id="email"
+                value={newSupp.email}
                 name="email"
+                required
                 className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                 placeholder="Correo Electrónico"
                 onChange={handleChange}
@@ -111,19 +131,20 @@ function FormPage() {
               </span>
             </label>
           </div>
-          <div className=" w-full">
+          <div className=" w-full py-2">
             <label htmlFor="product" className="block text-sm font-medium text-white"> Productos </label>
 
             <textarea
               id="product"
-              className="mt-2 w-full rounded-lg border-white border bg-black text-center text-white align-top shadow-sm sm:text-sm"
-              type="text"
+              className="mt-2  w-full rounded-lg border-white border bg-black text-center text-white align-top shadow-sm sm:text-sm"
               name="product"
+              value={newSupp.product}
+              required
               placeholder="5 Productos"
               onChange={handleChange}
             ></textarea>
           </div>
-          <button className="p-2 inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+          <button type="submit" className="p-2 inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
             Registrar
           </button>
         </div>
@@ -138,6 +159,13 @@ function FormPage() {
           </div>
         </Link>
       </div>
+      {showSuccessMessage && (
+        <aside className="fixed bottom-4 end-4 z-50 flex items-center justify-center gap-4 rounded-lg bg-black px-5 py-3 text-white">
+          <span className="text-sm font-medium hover:opacity-75">
+            Registrado Correctamente ✅
+          </span>
+        </aside>
+      )}
     </div>
   );
 }

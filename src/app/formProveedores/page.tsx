@@ -11,10 +11,22 @@ function FormPage() {
         email: "",
         product: "",
     });
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         console.log(newSupp)
         await createSupp()
+        setSupp({
+            name: "",
+            company: "",
+            phone: "",
+            email: "",
+            product: "",
+        });
+        setShowSuccessMessage(true); // Mostrar el mensaje de éxito
+        setTimeout(() => {
+            setShowSuccessMessage(false); // Ocultar el mensaje después de unos segundos
+        }, 4000);
     };
     const createSupp = async () => {
         const res = await fetch("/api/proveedores", {
@@ -43,6 +55,7 @@ function FormPage() {
                                 type="text"
                                 id="name"
                                 name="name"
+                                value={newSupp.name}
                                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent placeholder-transparent focus:border-transparent text-white focus:outline-none focus:ring-0"
                                 placeholder="Nombre"
                                 onChange={handleChange}
@@ -62,6 +75,7 @@ function FormPage() {
                                 type="text"
                                 id="company"
                                 name="company"
+                                value={newSupp.company}
                                 className="peer mx-2 h-[40px] w-[300px] border-none bg-transparent text-white placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Nombre comercial de la empresa"
                                 onChange={handleChange}
@@ -81,6 +95,7 @@ function FormPage() {
                                 type="tel"
                                 id="phone"
                                 name="phone"
+                                value={newSupp.phone}
                                 className="peer mx-2 h-[40px] w-[300px] border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Número de teléfono de contacto"
                                 onChange={handleChange}
@@ -100,6 +115,7 @@ function FormPage() {
                                 type="email"
                                 id="email"
                                 name="email"
+                                value={newSupp.email}
                                 className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Correo Electrónico"
                                 onChange={handleChange}
@@ -119,13 +135,14 @@ function FormPage() {
                                 type="text"
                                 id="product"
                                 name="product"
+                                value={newSupp.product}
                                 className="peer mx-2 h-[40px] w-[300px] text-white border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                                 placeholder="Giro"
                                 onChange={handleChange}
                             />
 
                             <span className=" pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-black p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-                            Giro
+                                Giro
                             </span>
                         </label>
                     </div>
@@ -144,6 +161,13 @@ function FormPage() {
                     </div>
                 </Link>
             </div>
+            {showSuccessMessage && (
+                <aside className="fixed bottom-4 end-4 z-50 flex items-center justify-center gap-4 rounded-lg bg-black px-5 py-3 text-white">
+                    <span className="text-sm font-medium hover:opacity-75">
+                        Registrado Correctamente ✅
+                    </span>
+                </aside>
+            )}
         </div>
     );
 }
