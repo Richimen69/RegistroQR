@@ -1,64 +1,28 @@
 'use client'
 import Link from "next/link";
-import { IconContext } from "react-icons";
-import { FcAssistant, FcBusinessman } from "react-icons/fc";
-import { FaDatabase } from "react-icons/fa";
-import { BsQrCodeScan } from "react-icons/bs";
-export default function Home() {
-  return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center bg-black">
-      <div className="flex items-center justify-center">
-        <div className="grid grid-cols-2 md:gap-10 gap-5">
-          <div className="flex flex-col">
-            <Link href={"/formInvitados"}>
-              <div className="bg-[#804ea2] p-10 md:w-[300px] md:h-[300px] w-[150px] flex flex-col items-center justify-center rounded-[40px] md:hover:scale-105 md:transition-transform hover:opacity-75 cursor-pointer">
-                <IconContext.Provider value={{ color: "white", size: "8em" }}>
-                  <FcBusinessman />
-                </IconContext.Provider>
-                <p className="md:text-2xl text-base  text-white">Agregar Invitado</p>
-              </div>
-            </Link>
-            <div className="flex items-center justify-center p-5">
-              <Link href={"/bdInvitados"}>
-                <div className="md:hover:scale-125 md:transition-transform w-auto">
-                  <IconContext.Provider value={{ size: "3em", color: "#804ea2" }}>
-                    <FaDatabase />
-                  </IconContext.Provider>
-                </div>
-              </Link>
+const Home = () => {
+    return (
+        <div className="h-screen w-full flex flex-col items-center justify-center bg-principal">
+            <div className="flex items-center justify-center">
+                <p className="md:text-5xl text-2xl text-center text-secondary font-bold">Feria empresarial canacintra 2024</p>
+                <img src={"/logo.png"} alt="Logo Canacintra" className="md:h-[100px] h-[70px] md:px-5 pr-2" />
             </div>
-          </div>
-
-          <div className="flex flex-col">
-            <Link href={"/formProveedores"}>
-              <div className="bg-[#804ea2] p-10 md:w-[300px] md:h-[300px] w-[150px] flex flex-col items-center justify-center rounded-[40px] md:hover:scale-105 md:transition-transform hover:opacity-75 cursor-pointer">
-                <IconContext.Provider value={{ color: "white", size: "8em" }}>
-                  <FcAssistant />
-                </IconContext.Provider>
-                <p className="md:text-2xl text-base text-white">Agregar Proveedor</p>
-              </div>
-            </Link>
             <div className="flex items-center justify-center p-5">
-              <Link href={"/bdProveedores"}>
-                <div className="md:hover:scale-125 md:transition-transform w-auto">
-                  <IconContext.Provider value={{ size: "3em", color: "#804ea2" }}>
-                    <FaDatabase />
-                  </IconContext.Provider>
-                </div>
-              </Link>
+                <p className="md:text-3xl text-xl text-secondary font-bold">Elija la opción deseada</p>
             </div>
-          </div>
+            <div className="flex items-center justify-center py-36 md:py-5 p-3 gap-5">
+                <Link href={"/registro"}>
+                    <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">
+                        <p className="text-white md:p-5 p-2">Registrar como comprador</p>
+                    </button>
+                </Link>
+                <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">
+                    <p className="text-white md:p-5 p-2">Registrar como proveedor</p>
+                </button>
+            </div>
+            <img src={"/canacintra.png"} alt="Logo Canacintra" className="w-[700px] py-10" />
         </div>
-      </div>
-      <div className="flex items-end justify-end px-5 w-full">
-        <Link href={"/read"}>
-          <div className="md:hover:scale-125 md:transition-transform w-auto">
-            <IconContext.Provider value={{ size: "5em", color: "#804ea2" }}>
-              <BsQrCodeScan />
-            </IconContext.Provider>
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
+    )
 }
+
+export default Home

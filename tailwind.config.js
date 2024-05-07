@@ -12,6 +12,12 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        primary: '#0A245E', // Color primario
+        secondary: '#424242',
+        tertiary: '#d2f5f2',
+        principal: '#EDEAE9'
+      }
     },
   },
   plugins: [],
