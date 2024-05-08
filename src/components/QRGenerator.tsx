@@ -9,7 +9,7 @@ function QRGenerator({ text, name }) {
       const url = await QRCode.toDataURL(text);
       qrRef.current.src = url;
       const link = document.createElement('a');
-      link.download = `${name}QR.png`;
+      link.download = `${name}.png`;
       link.href = qrRef.current.src;
       link.click();
     } catch (err) {
@@ -26,7 +26,7 @@ function QRGenerator({ text, name }) {
 
   return (
     <div>
-      <img ref={qrRef} alt="QR Code" />
+      <img ref={qrRef} alt="QR Code" className='hidden'/>
       <button onClick={() => { generateQR(); }}>Generar QR</button>
     </div>
   );
