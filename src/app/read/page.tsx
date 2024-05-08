@@ -4,9 +4,11 @@ import { Scanner } from '@yudiel/react-qr-scanner';
 
 function App() {
   const [apiResult, setApiResult] = useState(null);
+  const [isScanning, setIsScanning] = useState(false);
 
   const handleScan = async (data) => {
     if (data) {
+      setIsScanning(false); // detiene el escaneo después de obtener un resultado
 
       // Realiza una solicitud a la API con el resultado del escaneo
       const response = await fetch(`/api/invitados/${data}`);
@@ -26,10 +28,13 @@ function App() {
    
   return (
     <div className='w-full'>
-      <Scanner
-        onResult={handleScan}
-        onError={handleError}
-      />
+      {isScanning && (
+        <Scanner
+          onResult={handleScan}
+          onError={handleError}
+        />
+      )}
+      <button onClick={() => setIsScanning(true)}>Iniciar escaneo</button>
       {apiResult && (
         <div>
           <p>Nombre: {apiResult.name}</p>
@@ -44,5 +49,6 @@ function App() {
 }
 
 export default App;
+
 
 
