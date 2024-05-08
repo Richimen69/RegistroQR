@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div className="h-screen w-full flex flex-col items-center justify-center bg-principal">
             <div className="flex items-center justify-center">
-                <p className="md:text-5xl text-2xl text-center text-secondary font-bold">Feria empresarial canacintra 2024</p>
+                <p className="md:text-5xl text-2xl text-center w-9/12 text-secondary font-bold">FERIA EMPRESARIAL CANACINTRA 2024</p>
                 <img src={"/logo.png"} alt="Logo Canacintra" className="md:h-[100px] h-[70px] md:px-5 pr-2" />
             </div>
             <div className="flex items-center justify-center p-5">
