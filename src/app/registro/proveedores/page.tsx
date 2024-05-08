@@ -1,5 +1,7 @@
 'use client'
-import { ChangeEvent, FormEvent, useState } from "react";
+import Swal from "sweetalert2";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from 'next/navigation'
 const InputField = ({ id, placeholder, value, onChange }) => (
     <label
         htmlFor={id}
@@ -8,9 +10,12 @@ const InputField = ({ id, placeholder, value, onChange }) => (
         <input
             type="text"
             id={id}
+            name={id}
             placeholder={placeholder}
             className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
             onChange={onChange}
+            value={value}
+            required
         />
 
         <span
@@ -22,6 +27,7 @@ const InputField = ({ id, placeholder, value, onChange }) => (
 );
 
 function Formulario() {
+    const router = useRouter()
     const [newSupp, setSupp] = useState({
         name: "",
         company: "",
@@ -29,6 +35,9 @@ function Formulario() {
         email: "",
         product: "",
     });
+    const red = () => {
+        router.push("/")
+    }
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         console.log(newSupp)
@@ -40,9 +49,15 @@ function Formulario() {
             email: "",
             product: "",
         });
+        Swal.fire({
+            title: "Registro Exitoso",
+            text: "Presiona para continuar",
+            icon: "success"
+        });
+        red()
     };
     const createSupp = async () => {
-        const res = await fetch("/api/invitados", {
+        const res = await fetch("/api/proveedores", {
             method: "POST",
             body: JSON.stringify(newSupp),
             headers: {
@@ -63,20 +78,20 @@ function Formulario() {
             <div className="flex items-center flex-col justify-center">
                 <p className="text-4xl font-bold text-secondary">Rellena los datos</p>
                 <form onSubmit={handleSubmit}>
-                    <div className="py-5 w-[300px]">
+                    <div className="pt-5 pb-2 w-[300px]">
                         <InputField id="name" placeholder="Nombre" value={newSupp.name} onChange={handleChange} />
                     </div>
                     <div className="py-2 w-[300px]">
-                        <InputField id="UserCompany" placeholder="Nombre de la empresa" value={newSupp.company} onChange={handleChange} />
+                        <InputField id="company" placeholder="Nombre de la empresa" value={newSupp.company} onChange={handleChange} />
                     </div>
                     <div className="py-2 w-[300px]">
-                        <InputField id="UserEmail" placeholder="Correo Electronico" value={newSupp.email} onChange={handleChange} />
+                        <InputField id="email" placeholder="Correo Electronico" value={newSupp.email} onChange={handleChange} />
                     </div>
                     <div className="py-2 w-[300px]">
-                        <InputField id="UserPhone" placeholder="Celular (WhatsApp)" value={newSupp.phone} onChange={handleChange} />
+                        <InputField id="phone" placeholder="Celular (WhatsApp)" value={newSupp.phone} onChange={handleChange} />
                     </div>
                     <div className="py-2 w-[300px]">
-                        <InputField id="UserProduct" placeholder="Productos de Interes" value={newSupp.product} onChange={handleChange} />
+                        <InputField id="product" placeholder="Giro" value={newSupp.product} onChange={handleChange} />
                     </div>
                     <div className="flex items-center justify-center py-5">
                         <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">

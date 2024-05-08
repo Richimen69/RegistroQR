@@ -11,14 +11,16 @@ const Home = () => {
                 <p className="md:text-3xl text-xl text-secondary font-bold">Elija la opción deseada</p>
             </div>
             <div className="flex items-center justify-center py-36 md:py-5 p-3 gap-5">
-                <Link href={"/registro"}>
+                <Link href={'/registro/compradores'}>
                     <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">
                         <p className="text-white md:p-5 p-2">Registrar como comprador</p>
                     </button>
                 </Link>
-                <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">
-                    <p className="text-white md:p-5 p-2">Registrar como proveedor</p>
-                </button>
+                <Link href={'/registro/proveedores'}>
+                    <button className="bg-primary rounded-2xl hover:opacity-95 border hover:border-red-700">
+                        <p className="text-white md:p-5 p-2">Registrar como proveedor</p>
+                    </button>
+                </Link>
             </div>
             <img src={"/canacintra.png"} alt="Logo Canacintra" className="w-[700px] py-10" />
         </div>
