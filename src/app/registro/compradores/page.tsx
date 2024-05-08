@@ -71,7 +71,7 @@ function Formulario() {
     ) => setSupp({ ...newSupp, [e.target.name]: e.target.value });
 
     return (
-        <div className="w-full h-full bg-principal">
+        <div className="w-full md:h-full h-screen bg-principal">
             <div className="flex items-center justify-center">
                 <img src={"/canacintra.png"} alt="Logo Canacintra" className="w-[700px]" />
             </div>
