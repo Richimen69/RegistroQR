@@ -11,13 +11,14 @@ export async function GET(request, { params }) {
 
         if (!invitados) {
             invitados = await Proveedores.findById(params.id);
+            return NextResponse.json("proveedor");
         }
 
         if (!invitados) {
             return NextResponse.json({ message: "No Registrado" }, { status: 400 });
         }
 
-        return NextResponse.json(invitados);
+        return NextResponse.json("invitado");
     } catch (err: any) {
         return NextResponse.json({ error: err.message });
     }

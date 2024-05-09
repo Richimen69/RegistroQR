@@ -44,7 +44,7 @@ function App() {
           <p className='text-primary font-bold text-xl text-center p-1'>Empresa: {apiResult.company}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Telefono: {apiResult.phone}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Correro Electronico: {apiResult.email}</p>
-          <p className='text-primary font-bold text-xl text-center p-1'>Productos de interes: {apiResult.product}</p>
+          <p className='text-primary font-bold text-xl text-center p-1'>Productos: {apiResult.product}</p>
         </div>
       )}
     </div>
