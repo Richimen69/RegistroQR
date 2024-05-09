@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react';
-import Swal from "sweetalert2";
 import { Scanner } from '@yudiel/react-qr-scanner';
 
 function App() {
@@ -29,25 +28,33 @@ function App() {
 
   return (
     <div className='w-full bg-principal h-screen flex flex-col items-center justify-center'>
-      {isScanning && (
-        <Scanner
-          onResult={handleScan}
-          onError={handleError}
-        />
-      )}
-      <div className='flex items-center justify-center'>
-        <button className='bg-primary rounded-xl' onClick={() => setIsScanning(true)}><p className='text-white text-lg p-5'>Iniciar escaneo</p></button>
-      </div>
-      {apiResult && (
+    {isScanning && (
+      <Scanner
+        onResult={handleScan}
+        onError={handleError}
+      />
+    )}
+    <div className='flex items-center justify-center'>
+      <button className='bg-primary rounded-xl' onClick={() => setIsScanning(true)}><p className='text-white text-lg p-5'>Iniciar escaneo</p></button>
+    </div>
+    {apiResult ? (
+      apiResult.name ? (
         <div className='py-5'>
           <p className='text-primary font-bold text-xl text-center p-1'>Nombre: {apiResult.name}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Empresa: {apiResult.company}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Telefono: {apiResult.phone}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Correro Electronico: {apiResult.email}</p>
-          <p className='text-primary font-bold text-xl text-center p-1'>Productos: {apiResult.product}</p>
+          {apiResult.tipo === 'Proveedor' ? (
+            <p className='text-primary font-bold text-xl text-center p-1'>Giro: {apiResult.product}</p>
+          ) : (
+            <p className='text-primary font-bold text-xl text-center p-1'>Productos de interes: {apiResult.product}</p>
+          )}
         </div>
-      )}
-    </div>
+      ) : (
+        <p className='text-red-700 font-bold text-3xl text-center p-5'>No está registrado</p>
+      )
+    ) : null}
+  </div>
   );
 }
 

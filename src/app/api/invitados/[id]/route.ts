@@ -8,18 +8,15 @@ export async function GET(request, { params }) {
         await dbConnect();
 
         let invitados = await Invitados.findById(params.id);
+        let tipo = 'Invitado';
 
         if (!invitados) {
             invitados = await Proveedores.findById(params.id);
-            return NextResponse.json("proveedor");
+            tipo = 'Proveedor';
         }
 
-        if (!invitados) {
-            return NextResponse.json({ message: "No Registrado" }, { status: 400 });
-        }
-
-        return NextResponse.json("invitado");
+        return NextResponse.json({ ...invitados._doc, tipo });
     } catch (err: any) {
-        return NextResponse.json({ error: err.message });
+        return NextResponse.json( "No Registrado");
     }
 }
