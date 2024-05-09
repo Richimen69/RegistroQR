@@ -26,23 +26,25 @@ function App() {
   const handleError = (err) => {
     console.error(err);
   }
-   
+
   return (
-    <div className='w-full'>
+    <div className='w-full bg-principal h-screen flex flex-col items-center justify-center'>
       {isScanning && (
         <Scanner
           onResult={handleScan}
           onError={handleError}
         />
       )}
-      <button onClick={() => setIsScanning(true)}>Iniciar escaneo</button>
+      <div className='flex items-center justify-center'>
+        <button className='bg-primary rounded-xl' onClick={() => setIsScanning(true)}><p className='text-white text-lg p-5'>Iniciar escaneo</p></button>
+      </div>
       {apiResult && (
-        <div>
-          <p>Nombre: {apiResult.name}</p>
-          <p>Empresa: {apiResult.company}</p>
-          <p>Telefono: {apiResult.phone}</p>
-          <p>Correro Electronico: {apiResult.email}</p>
-          <p>Productos de interes: {apiResult.product}</p>
+        <div className='py-5'>
+          <p className='text-primary font-bold text-xl text-center p-1'>Nombre: {apiResult.name}</p>
+          <p className='text-primary font-bold text-xl text-center p-1'>Empresa: {apiResult.company}</p>
+          <p className='text-primary font-bold text-xl text-center p-1'>Telefono: {apiResult.phone}</p>
+          <p className='text-primary font-bold text-xl text-center p-1'>Correro Electronico: {apiResult.email}</p>
+          <p className='text-primary font-bold text-xl text-center p-1'>Productos de interes: {apiResult.product}</p>
         </div>
       )}
     </div>
