@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
-import Swal from "sweetalert2";
 
 function App() {
   const [apiResult, setApiResult] = useState(null);
@@ -13,10 +12,6 @@ function App() {
 
       // Realiza una solicitud a la API con el resultado del escaneo
       const response = await fetch(`/api/invitados/${data}`);
-      if (!response.ok) {
-        console.error('Error al buscar el dato en la API');
-        return;
-      }
       const apiData = await response.json();
 
       // Almacena el resultado de la API en el estado
@@ -28,12 +23,6 @@ function App() {
   }
 
   const handleError = (err) => {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Something went wrong!",
-      footer: '<a href="#">Why do I have this issue?</a>'
-    });
     console.error(err);
   }
    
