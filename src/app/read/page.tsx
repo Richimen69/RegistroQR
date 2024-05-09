@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import Swal from "sweetalert2";
 import { Scanner } from '@yudiel/react-qr-scanner';
 
 function App() {
