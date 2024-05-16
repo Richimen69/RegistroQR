@@ -27,7 +27,12 @@ const invitadosSchema: Schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  pago: { // Nuevo campo
+    type: String,
+    required: false // Ajusta según tus necesidades
+  },
 });
+
 
 const Invitados = mongoose.models.Invitados || mongoose.model<Invitados>("Invitados", invitadosSchema);
 

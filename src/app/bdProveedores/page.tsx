@@ -5,7 +5,7 @@ import Link from "next/link";
 import BD from "../../components/BD"
 const BDInvitados = () => {
     return (
-        <div className="w-screen h-screen bg-black">
+        <div className="w-screen h-screen py-5 bg-black">
             <div className="px-5">
                 <Link href={"/"}>
                     <div className="w-auto">

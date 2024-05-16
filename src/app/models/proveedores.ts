@@ -27,6 +27,10 @@ const proveedoresSchema: Schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  pago: { // Nuevo campo
+    type: String,
+    required: false // Ajusta según tus necesidades
+  },
 });
 
 const Proveedores = mongoose.models.Proveedores || mongoose.model<Proveedores>("Proveedores", proveedoresSchema);
