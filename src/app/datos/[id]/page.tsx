@@ -1,6 +1,6 @@
 "use client";
-import { useParams  } from "next/navigation";
-import React, { FormEvent, useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
@@ -26,19 +26,23 @@ export default function Datos() {
   }, []);
   const [newSupp, setSupp] = useState({
     pago: "Sin pago",
+    stand: ""
   });
+
   const handleChange = (e) => {
-    setIsChecked(!isChecked);
-    if (e.target.checked) {
-      setSupp({ ...newSupp, pago: e.target.value });
-    } else {
-      setSupp({ ...newSupp, pago: "Sin pago" });
-    }
+    const { checked, value } = e.target;
+    setIsChecked(checked);
+    setSupp({ ...newSupp, pago: checked ? value : "Sin pago" });
   };
+
+  const handleInputChange = (e) => {
+    setSupp({ ...newSupp, stand: e.target.value });
+  };
+
   const red = () => {
     if (apiResult.tipo === "Invitado") {
       router.push("/bdInvitados");
-    }else{
+    } else {
       router.push("/bdProveedores");
     }
   };
@@ -64,7 +68,7 @@ export default function Datos() {
       text: "Presiona para continuar",
       icon: "success",
     });
-    red()
+    red();
   };
   return (
     <div className="h-screen w-full bg-principal flex flex-col items-center justify-center">
@@ -87,7 +91,20 @@ export default function Datos() {
               <div className="peer ring-0 bg-rose-400 rounded-full outline-none duration-300 after:duration-500 w-12 h-12 shadow-md peer-checked:bg-emerald-500 peer-focus:outline-none after:content-['✖️'] after:rounded-full after:absolute after:outline-none after:h-10 after:w-10 after:bg-gray-50 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-hover:after:scale-75 peer-checked:after:content-['✔️'] after:-rotate-180 peer-checked:after:rotate-0"></div>
             </label>
           </div>
-          <div className="flex py-5 items-center justify-center ">
+          {apiResult?.tipo === "Proveedor" ? (
+            <div className="flex flex-col py-5">
+              <p className="text-primary">Asignar Stand</p>
+              <input
+                type="text"
+                placeholder="Stand"
+                onChange={handleInputChange}
+                value={newSupp.stand}
+                name="stand"
+                className="outline-none rounded-lg border-primary border bg-gray-200 focus:bg-white transition-all duration-200 ease-in-out py-2 px-4 font-sans"
+              />
+            </div>
+          ) : null}
+          <div className="flex py-5 items-center justify-center">
             <button className="bg-primary px-3 py-2 rounded-xl hover:opacity-80">
               <p className="text-white text-xl">Aceptar</p>
             </button>

@@ -40,15 +40,20 @@ function App() {
     {apiResult ? (
       apiResult.name ? (
         <div className='py-5'>
+          <p className='text-primary font-bold text-xl text-center p-1'>{apiResult.tipo}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Nombre: {apiResult.name}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Empresa: {apiResult.company}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Telefono: {apiResult.phone}</p>
           <p className='text-primary font-bold text-xl text-center p-1'>Correro Electronico: {apiResult.email}</p>
           {apiResult.tipo === 'Proveedor' ? (
+            <div>
             <p className='text-primary font-bold text-xl text-center p-1'>Giro: {apiResult.product}</p>
+            <p className='text-primary font-bold text-xl text-center p-1'>Stand {apiResult.stand}</p>F
+            </div>
           ) : (
             <p className='text-primary font-bold text-xl text-center p-1'>Productos de interes: {apiResult.product}</p>
           )}
+          <p className='text-primary font-bold text-xl text-center p-1'>Estado: {apiResult.pago}</p>
         </div>
       ) : (
         <p className='text-red-700 font-bold text-3xl text-center p-5'>No está registrado</p>
