@@ -48,7 +48,7 @@ function App() {
           {apiResult.tipo === 'Proveedor' ? (
             <div>
             <p className='text-primary font-bold text-xl text-center p-1'>Giro: {apiResult.product}</p>
-            <p className='text-primary font-bold text-xl text-center p-1'>Stand {apiResult.stand}</p>F
+            <p className='text-primary font-bold text-xl text-center p-1'>Stand {apiResult.stand}</p>
             </div>
           ) : (
             <p className='text-primary font-bold text-xl text-center p-1'>Productos de interes: {apiResult.product}</p>
