@@ -1,15 +1,15 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
+import { useParams  } from "next/navigation";
+import React, { FormEvent, useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 export default function Datos() {
   const [apiResult, setApiResult] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
-  const searchData = useSearchParams();
+  const params = useParams();
   const router = useRouter();
-  const id = searchData.get("user");
+  const id = params.id;
   useEffect(() => {
     const BD = async () => {
       const response = await fetch(`/api/invitados/${id}`);

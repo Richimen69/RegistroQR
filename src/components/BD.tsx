@@ -52,7 +52,7 @@ const BD: React.FC<{ consulta: string }> = ({ consulta }) => {
         <tbody className="bg-gray-700 divide-y divide-gray-200">
           {tableData.map((item) => (
             <tr key={item._id}>
-              <Link href={{pathname: "/datos", query: {user: item._id}}}>
+              <Link href={`/datos/${item._id}`}>
                 <td
                   className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white"
                 >
