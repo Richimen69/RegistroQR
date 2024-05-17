@@ -11,7 +11,6 @@ export default function Datos() {
   const router = useRouter();
   const id = searchData.get("user");
   useEffect(() => {
-
     const BD = async () => {
       const response = await fetch(`/api/invitados/${id}`);
       const apiData = await response.json();
@@ -21,7 +20,7 @@ export default function Datos() {
 
       // Haz algo con el resultado de la API
       console.log(apiData);
-      setIsChecked(apiData.pago==="Pagado")   
+      setIsChecked(apiData.pago === "Pagado");
     };
     BD();
   }, []);
@@ -37,7 +36,11 @@ export default function Datos() {
     }
   };
   const red = () => {
-    router.push("/bdInvitados");
+    if (apiResult.tipo === "Invitado") {
+      router.push("/bdInvitados");
+    }else{
+      router.push("/bdProveedores");
+    }
   };
 
   const addPago = async () => {
@@ -50,20 +53,19 @@ export default function Datos() {
         body: JSON.stringify(newSupp),
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(newSupp)
-    await addPago()
+    await addPago();
     Swal.fire({
-        title: "Actualizado Correctamente",
-        text: "Presiona para continuar",
-        icon: "success"
+      title: "Actualizado Correctamente",
+      text: "Presiona para continuar",
+      icon: "success",
     });
-    //red()
-};
+    red()
+  };
   return (
     <div className="h-screen w-full bg-principal flex flex-col items-center justify-center">
       <div className="bg-tertiary md:w-2/6 h-auto items-center flex flex-col rounded-3xl border border-black w-4/6">
@@ -79,7 +81,7 @@ export default function Datos() {
                 type="checkbox"
                 onChange={handleChange}
                 value="Pagado"
-                checked = {isChecked}
+                checked={isChecked}
                 className="sr-only peer"
               />
               <div className="peer ring-0 bg-rose-400 rounded-full outline-none duration-300 after:duration-500 w-12 h-12 shadow-md peer-checked:bg-emerald-500 peer-focus:outline-none after:content-['✖️'] after:rounded-full after:absolute after:outline-none after:h-10 after:w-10 after:bg-gray-50 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-hover:after:scale-75 peer-checked:after:content-['✔️'] after:-rotate-180 peer-checked:after:rotate-0"></div>

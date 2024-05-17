@@ -5,6 +5,7 @@ export interface Proveedores extends Document {
   phone: Number,
   email: String,
   product: String,
+  pago: String,
 }
 const proveedoresSchema: Schema = new mongoose.Schema({
   name: {

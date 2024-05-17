@@ -41,7 +41,8 @@ export async function PUT(request, { params }) {
       tipo = "Proveedor";
     }
 
-    return NextResponse.json(invitados);
+    return NextResponse.json({ invitados, tipo });
+    
   } catch (error) {
     return NextResponse.json(error.message, {
       status: 400,

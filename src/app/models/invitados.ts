@@ -5,6 +5,7 @@ export interface Invitados extends Document {
   phone: Number,
   email: String,
   product: String,
+  pago: String,
 }
 const invitadosSchema: Schema = new mongoose.Schema({
   name: {

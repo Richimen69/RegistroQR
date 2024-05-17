@@ -59,22 +59,22 @@ const BD: React.FC<{ consulta: string }> = ({ consulta }) => {
                   {item.name}
                 </td>
               </Link>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 {item.company}
               </td>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 {item.phone}
               </td>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 {item.email}
               </td>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 {item.product}
               </td>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 {item.pago}
               </td>
-              <td className="md:px-6 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
+              <td className="md:px-1 px-1 font-normal text-xs py-4 md:whitespace-nowrap text-white">
                 <button>
                   <QRGenerator text={item._id} name={item.name.toString()} />
                 </button>
